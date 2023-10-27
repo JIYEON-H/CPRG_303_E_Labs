@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import MyComp from './my-comp';
 import React, {useState} from 'react';
+import ToDoList from './ToDoList';
+import ToDoForm from './ToDoForm';
 
 function App(): JSX.Element {
   const [inputText, setInputText] = useState('');
@@ -45,6 +47,8 @@ function App(): JSX.Element {
       />
       <Button title="A button!" onPress={handlePress} />
       {/* <FlatList data={data} renderItem={renderItem} /> */}
+      <ToDoForm />
+      <ToDoList />
     </ScrollView>
   );
 }
