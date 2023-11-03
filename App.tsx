@@ -15,6 +15,7 @@ import ToDoForm from './ToDoForm';
 
 function App(): JSX.Element {
   const [inputText, setInputText] = useState('');
+  const [tasks, setTasks] = useState(['Do laundry', 'Go to gym', 'Walk dog']);
 
   let condition = true;
 
@@ -48,7 +49,7 @@ function App(): JSX.Element {
       <Button title="A button!" onPress={handlePress} />
       {/* <FlatList data={data} renderItem={renderItem} /> */}
       <ToDoForm />
-      <ToDoList />
+      <ToDoList tasks={tasks} />
     </ScrollView>
   );
 }

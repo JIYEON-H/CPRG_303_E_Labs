@@ -17,17 +17,6 @@ function ToDoForm() {
 }
 
 const styles = StyleSheet.create({
-  task: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderColor: '#ccc',
-  },
-  completed: {
-    backgroundColor: '#e0e0e0',
-  },
-  taskText: {
-    fontSize: 16,
-  },
   form: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -42,6 +31,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     marginRight: 10,
+    marginBottom: 10,
   },
 });
 
