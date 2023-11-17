@@ -13,9 +13,10 @@ import React, {useState} from 'react';
 import ToDoList from './ToDoList';
 import ToDoForm from './ToDoForm';
 
-function App(): JSX.Element {
+function App() {
   const [inputText, setInputText] = useState('');
-  const [tasks, setTasks] = useState(['Do laundry', 'Go to gym', 'Walk dog']);
+  const [tasks, setTasks] = useState([]);
+  const [taskText, setTaskText] = useState('');
 
   let condition = true;
 
@@ -29,13 +30,18 @@ function App(): JSX.Element {
 
   const renderItem = ({...item}) => <Text> {item.text} </Text>;
 
-  const handleTextInput = (text: React.SetStateAction<string>) => {
+  const handleTextInput = text => {
     setInputText(text);
   };
 
   const handlePress = () => {
     // some code
   };
+
+  const addTask = taskText => {
+    setTasks([...tasks, taskText]);
+  };
+
   return (
     <ScrollView style={styles.container}>
       <Text style={dynamicStyles}>Hello World</Text>
@@ -48,7 +54,7 @@ function App(): JSX.Element {
       />
       <Button title="A button!" onPress={handlePress} />
       {/* <FlatList data={data} renderItem={renderItem} /> */}
-      <ToDoForm />
+      <ToDoForm addTask={addTask} />
       <ToDoList tasks={tasks} />
     </ScrollView>
   );
