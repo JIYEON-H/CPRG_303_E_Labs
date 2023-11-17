@@ -8,15 +8,16 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
-import MyComp from './my-comp';
+import MyComp from '../my-comp';
 import React, {useState} from 'react';
-import ToDoList from './ToDoList';
-import ToDoForm from './ToDoForm';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen';
+import AboutScreen from './screens/AboutScreen';
 
 function App() {
-  const [inputText, setInputText] = useState('');
-  const [tasks, setTasks] = useState([]);
   const [taskText, setTaskText] = useState('');
+  const Stack = createNativeStackNavigator();
 
   let condition = true;
 
@@ -30,33 +31,15 @@ function App() {
 
   const renderItem = ({...item}) => <Text> {item.text} </Text>;
 
-  const handleTextInput = text => {
-    setInputText(text);
-  };
-
-  const handlePress = () => {
-    // some code
-  };
-
-  const addTask = taskText => {
-    setTasks([...tasks, taskText]);
-  };
-
   return (
-    <ScrollView style={styles.container}>
-      <Text style={dynamicStyles}>Hello World</Text>
-      <MyComp />
-      {/* <Image source={require('./myPic.jpg')} style={styles.image} /> */}
-      <TextInput
-        placeholder="Please enter your name."
-        value={inputText}
-        onChangeText={handleTextInput}
-      />
-      <Button title="A button!" onPress={handlePress} />
-      {/* <FlatList data={data} renderItem={renderItem} /> */}
-      <ToDoForm addTask={addTask} />
-      <ToDoList tasks={tasks} />
-    </ScrollView>
+    <NavigationContainer>
+      {/* <ScrollView style={styles.container}> */}
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
+      {/* </ScrollView> */}
+    </NavigationContainer>
   );
 }
 

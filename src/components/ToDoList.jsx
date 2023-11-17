@@ -18,8 +18,8 @@ function ToDoList({tasks}) {
   return (
     <SafeAreaView>
       <ScrollView>
-        {tasks.map(task => (
-          <Pressable key={task.index}>
+        {tasks.map((task, index) => (
+          <Pressable key={index}>
             <View style={[styles.task]}>
               <Text style={styles.taskText}>{task}</Text>
             </View>
